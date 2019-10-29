@@ -17,6 +17,10 @@ describe('twoSum', () => {
     test('returns correct value', () => {
       expect(twoSum([3, 3], 6)).toEqual([0, 1]);
     });
+
+    test('returns correct value', () => {
+      expect(twoSum([1, 3, 4, 2], 6)).toEqual([2, 3]);
+    });
   });
 
   describe('when [incorrect target is given', () => {
