@@ -1,16 +1,13 @@
 export const twoSum = (nums: number[], target: number): number[] | undefined => {
-  const sumMap = getSumMap(nums);
-  return sumMap[target];
-}
-
-const getSumMap = (nums: number[]) => {
-  const result: any = {};
-  nums.forEach((n1, i) => {
-    for(let _i = i + 1; _i <= nums.length; _i++) {
-      const sum  = n1 + nums[_i];
-      const indexes = [i, _i];
-      result[sum] = indexes;
+  let res;
+  nums.some((n, i) => {
+    const targetNum = target - n;
+    const filteredNums = [...nums.slice(i + 1)];
+    const index = filteredNums.findIndex(el => el === targetNum);
+    if (index > -1) {
+      res = [i, index + i + 1]
+      return true;
     }
-  });
-  return result;
+  })
+  return res;
 }
