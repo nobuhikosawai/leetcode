@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/happy-number/
+
 export const isHappy = (n: number): boolean => {
   const HAPPY_NUMBER = 1;
   const prevValues: number[] = [];
