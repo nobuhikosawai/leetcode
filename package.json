@@ -8,11 +8,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "typescript": "^3.6.4"
+    "typescript": "^3.8.3"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.20",
-    "jest": "^24.9.0",
-    "ts-jest": "^24.1.0"
+    "@types/jest": "^25.1.4",
+    "jest": "^25.2.4",
+    "ts-jest": "^25.3.0"
   }
 }
