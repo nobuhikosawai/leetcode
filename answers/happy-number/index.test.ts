@@ -10,6 +10,10 @@ describe('isHappy', () => {
       expect(isHappy(7)).toEqual(true);
     });
 
+    test('happy', () => {
+      expect(isHappy(1111111)).toEqual(true);
+    });
+
     test('unhappy', () => {
       expect(isHappy(35)).toEqual(false);
     });
