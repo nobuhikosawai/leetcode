@@ -1,14 +1,11 @@
+// https://leetcode.com/problems/single-number/solution/
+
 export const singleNumber = (nums: number[]): number => {
-    let set = new Set<number>();
+  let a = 0;
 
-    while(nums.length > 0) {
-      const n = nums.shift();
-      if (!set.has(n)) {
-          set.add(n)
-      } else {
-          set.delete(n)
-      }
-    }
+  nums.forEach(n => {
+    a ^= n;
+  });
 
-    return Array.from(set)[0];
+  return a;
 };
