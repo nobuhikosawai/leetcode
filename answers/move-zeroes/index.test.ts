@@ -7,5 +7,11 @@ describe('moveZeroes', () => {
       moveZeroes(nums)
       expect(nums).toEqual([1,3,12,0,0]);
     });
+
+    test('ok', () => {
+      const nums = [0,0,1];
+      moveZeroes(nums)
+      expect(nums).toEqual([1,0,0]);
+    });
   });
 });
