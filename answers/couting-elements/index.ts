@@ -1,3 +1,4 @@
+// No problem link.
 export const countElemenets = (arr: number[]): number => {
   let arrObj: { [key: number]: number } = {};
 
