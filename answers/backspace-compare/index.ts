@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/backspace-string-compare
 export const backspaceCompare = (S: string, T: string): boolean => {
   let backSpacedS = '';
   let backSpacedT = '';
