@@ -16,4 +16,8 @@ describe('backspaceCompare', () => {
   test('ok', () => {
     expect(backspaceCompare("a#c", "b")).toEqual(false);
   });
+
+  test('ok', () => {
+    expect(backspaceCompare("hd#dp#czsp#####", "hd#dp#czsp######")).toEqual(false);
+  });
 });
