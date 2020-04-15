@@ -1,3 +1,4 @@
+// https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/529/week-2/3299/
 export const stringShift = (s: string, shift: number[][]) => {
   let sHash = {left: 0, right: 0};
   shift.forEach(sh => {
