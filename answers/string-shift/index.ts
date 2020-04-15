@@ -12,12 +12,12 @@ export const stringShift = (s: string, shift: number[][]) => {
   if (sHash.right === sHash.left) {
       return s;
   } else if (sHash.right > sHash.left) {
-      amount = sHash.right - sHash.left;
+      amount = (sHash.right - sHash.left) % s.length;
       const latter = s.substring(s.length - amount);
       const prev = s.substring(0, s.length - amount);
       return latter + prev;
   } else {
-      amount = sHash.left - sHash.right;
+      amount = (sHash.left - sHash.right) % s.length;
       const prev = s.substring(0, amount);
       const latter = s.substring(amount);
       return latter + prev;
