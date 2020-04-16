@@ -1,5 +1,26 @@
 export const productExceptSelf = (nums: number[]) => {
-  const allProduct = nums.reduce((p, n) => p * n );
+  const numOfZero = nums.reduce((count, n) => {
+    if (n === 0) {
+      count += 1;
+    }
+    return count;
+  }, 0);
 
-  return nums.map(n => n === 0 ? 0 : allProduct / n);
+  if (numOfZero >= 2) {
+    return Array(nums.length).fill(0);
+  }
+
+  if (numOfZero === 1) {
+    const allProductExceptZero = nums.reduce((p, n) => {
+      if (n > 0) {
+        p *= n
+      }
+      return p;
+    }, 1);
+    
+    return nums.map(n => n === 0 ? allProductExceptZero : 0);
+  }
+
+  const allProduct = nums.reduce((p, n) => p *= n);
+  return nums.map(n => allProduct / n);
 }
