@@ -1,3 +1,4 @@
+// https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/530/week-3/3300/
 export const productExceptSelf = (nums: number[]) => {
   const numOfZero = nums.reduce((count, n) => {
     if (n === 0) {
