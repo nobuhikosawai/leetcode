@@ -12,7 +12,7 @@ export const productExceptSelf = (nums: number[]) => {
 
   if (numOfZero === 1) {
     const allProductExceptZero = nums.reduce((p, n) => {
-      if (n > 0) {
+      if (n) {
         p *= n
       }
       return p;

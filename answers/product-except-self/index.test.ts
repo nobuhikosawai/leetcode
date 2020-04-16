@@ -16,4 +16,8 @@ describe('productExceptSelf', () => {
   test('ok', () => {
     expect(productExceptSelf([0,1,0])).toEqual([0,0,0]);
   });
+
+  test('ok', () => {
+    expect(productExceptSelf([9,0,-2])).toEqual([0,-18,0]);
+  });
 });
