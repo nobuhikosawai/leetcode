@@ -1,3 +1,4 @@
+// https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/531/week-4/3311/
 export const longestCommonSubsequence = (text1: string, text2: string): number => {
   let memo: {[key: string]: number} = {};
   const dp = (i:number, j:number): number => {
