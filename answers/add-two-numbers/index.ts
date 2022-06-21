@@ -20,30 +20,25 @@ export class ListNode {
 }
 
 export function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | null {
-  const getNumber = (l: ListNode, i: number, agg: bigint): bigint => {
-    agg = agg + BigInt(l.val) * (10n ** BigInt(i))
-
-    if (l.next) {
-      return getNumber(l.next, i + 1, agg)
-    } else {
-      return agg
-    }
-  }
-
-  const num1 = getNumber(l1, 0, 0n)
-  const num2 = getNumber(l2, 0, 0n)
-
-  const res = num1 + num2
-
-
-  const getListNode = (val: bigint): ListNode | null => {
-    if (val === 0n) {
+  const getValue = (l1: ListNode | null, l2: ListNode | null, carryover: number): ListNode => {
+    if (!l1 && !l2 && !carryover) {
       return null;
     }
-    const mod = val % 10n
 
-    return new ListNode(Number(mod), getListNode((val - mod) / 10n))
+    const sum = (l1?.val ?? 0) + (l2?.val ?? 0) + carryover;
+
+    let val: number
+    let nextCarryover: number
+    if (sum >= 10) {
+      val = sum % 10;
+      nextCarryover = 1;
+    } else {
+      val = sum;
+      nextCarryover = 0;
+    }
+
+    return new ListNode(val, getValue(l1?.next, l2?.next, nextCarryover));
   }
 
-  return res === 0n ? new ListNode(0, null) : getListNode(res)
+  return getValue(l1, l2, 0);
 };
