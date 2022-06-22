@@ -2,7 +2,7 @@
 export const countElemenets = (arr: number[]): number => {
   let arrObj: { [key: number]: number } = {};
 
-  arr.forEach(n => {
+  arr.forEach((n) => {
     if (!arrObj[n]) {
       arrObj[n] = 1;
     } else {
@@ -11,7 +11,7 @@ export const countElemenets = (arr: number[]): number => {
   });
 
   let count = 0;
-  Object.keys(arrObj).forEach(key => {
+  Object.keys(arrObj).forEach((key) => {
     const n = Number(key);
     if (arrObj[n + 1]) {
       count += arrObj[n];

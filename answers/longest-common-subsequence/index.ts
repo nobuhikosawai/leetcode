@@ -1,7 +1,10 @@
 // https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/531/week-4/3311/
-export const longestCommonSubsequence = (text1: string, text2: string): number => {
-  let memo: {[key: string]: number} = {};
-  const dp = (i:number, j:number): number => {
+export const longestCommonSubsequence = (
+  text1: string,
+  text2: string
+): number => {
+  let memo: { [key: string]: number } = {};
+  const dp = (i: number, j: number): number => {
     const memoKey = [i, j].toString();
     if (memo[memoKey] !== undefined) {
       return memo[memoKey];
@@ -19,14 +22,14 @@ export const longestCommonSubsequence = (text1: string, text2: string): number =
       const lastChar2 = text2.slice(j - 1, j);
 
       if (lastChar1 && lastChar2 && lastChar1 === lastChar2) {
-        memo[memoKey] = dp(i - 1, j - 1) + 1
+        memo[memoKey] = dp(i - 1, j - 1) + 1;
       } else {
         memo[memoKey] = Math.max(dp(i, j - 1), dp(i - 1, j));
       }
     }
 
     return memo[memoKey];
-  }
+  };
 
   return dp(text1.length, text2.length);
 };

@@ -27,5 +27,5 @@ describe('twoSum', () => {
     test('returns undefined', () => {
       expect(twoSum([2, 7, 11, 15], 3)).toEqual(undefined);
     });
-  })
+  });
 });

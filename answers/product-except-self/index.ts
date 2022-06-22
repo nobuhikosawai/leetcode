@@ -14,14 +14,14 @@ export const productExceptSelf = (nums: number[]) => {
   if (numOfZero === 1) {
     const allProductExceptZero = nums.reduce((p, n) => {
       if (n) {
-        p *= n
+        p *= n;
       }
       return p;
     }, 1);
-    
-    return nums.map(n => n === 0 ? allProductExceptZero : 0);
+
+    return nums.map((n) => (n === 0 ? allProductExceptZero : 0));
   }
 
-  const allProduct = nums.reduce((p, n) => p *= n);
-  return nums.map(n => allProduct / n);
-}
+  const allProduct = nums.reduce((p, n) => (p *= n));
+  return nums.map((n) => allProduct / n);
+};

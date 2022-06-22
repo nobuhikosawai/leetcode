@@ -4,7 +4,7 @@ export const backspaceCompare = (S: string, T: string): boolean => {
   let backSpacedT = '';
 
   for (let i = 0; i < S.length; i++) {
-    const char = S[i]
+    const char = S[i];
     if (char === '#') {
       backSpacedS = backSpacedS.slice(0, -1);
     } else {
@@ -13,7 +13,7 @@ export const backspaceCompare = (S: string, T: string): boolean => {
   }
 
   for (let i = 0; i < T.length; i++) {
-    const char = T[i]
+    const char = T[i];
     if (char === '#') {
       backSpacedT = backSpacedT.slice(0, -1);
     } else {
