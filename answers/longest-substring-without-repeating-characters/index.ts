@@ -1,25 +1,30 @@
 export function lengthOfLongestSubstring(s: string): number {
-  let set = new Set<string>(),
+  let map = new Map<string, number>(),
     target = s,
     i = 0,
-    prevSet: Set<string> | undefined;
+    prevMap = new Map<string, number>();
 
   while (target) {
     const char = target[0];
 
-    if (set.has(char)) {
-      if (!prevSet || set.size > prevSet.size) {
-        prevSet = new Set([...set]);
+    if (map.has(char)) {
+      if (map.size > prevMap.size) {
+        prevMap = new Map(map);
       }
-      set.clear();
-      set.add(char);
+      const index = map.get(char);
+      map.forEach((v, k, m) => {
+        if (v <= index) {
+          return m.delete(k);
+        }
+      });
+      map.set(char, i);
     } else {
-      set.add(char);
+      map.set(char, i);
     }
 
     i++;
     target = s.slice(i);
   }
 
-  return Math.max(set.size, prevSet?.size ?? 0);
+  return Math.max(map.size, prevMap?.size ?? 0);
 }
