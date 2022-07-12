@@ -18,4 +18,16 @@ describe('Median of Two Sorted Arrays', () => {
       nums2 = [-1, 0, 0, 0, 0, 0, 1];
     expect(findMedianSortedArrays(nums1, nums2)).toEqual(0.0);
   });
+
+  test('test4', () => {
+    const nums1: number[] = [],
+      nums2 = [1];
+    expect(findMedianSortedArrays(nums1, nums2)).toEqual(1.0);
+  });
+
+  test('test5', () => {
+    const nums1 = [3],
+      nums2 = [-2, -1];
+    expect(findMedianSortedArrays(nums1, nums2)).toEqual(-1.0);
+  });
 });
