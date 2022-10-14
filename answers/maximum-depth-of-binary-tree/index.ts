@@ -13,23 +13,8 @@ export class TreeNode {
 }
 
 export function maxDepth(root: TreeNode | null): number {
-  let maxDepth = 0;
-
-  function search(node: TreeNode | null, depth: number): number {
-    if (!node) {
-      if (depth > maxDepth) {
-        maxDepth = depth;
-      }
-      return depth;
-    }
-
-    depth++;
-    [node.left, node.right].forEach((n) => {
-      return search(n, depth);
-    });
+  if (!root) {
+    return 0;
   }
-
-  search(root, maxDepth);
-
-  return maxDepth;
+  return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
 }
