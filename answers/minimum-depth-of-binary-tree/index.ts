@@ -1,5 +1,7 @@
 import { TreeNode } from '../../data-structures/tree-node';
 
+// 111. Minimum Depth of Binary Tree
+// https://leetcode.com/problems/minimum-depth-of-binary-tree/
 type TreeNodeWithDepth = [TreeNode, number];
 
 export function minDepth(root: TreeNode | null): number {
