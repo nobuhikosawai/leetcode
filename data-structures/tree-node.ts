@@ -30,8 +30,8 @@ export function arrayToTreeNode(arr: Array<number | null>): TreeNode | null {
     } else {
       const newLatestTrees: TreeNode[] = [];
       latestTrees.forEach((t) => {
-        t.left = createTreeNode(arr[i]);
-        t.right = createTreeNode(arr[i + 1]);
+        t.left = arr[i] ? createTreeNode(arr[i]) : null;
+        t.right = arr[i + 1] ? createTreeNode(arr[i + 1]) : null;
         if (t.left) {
           newLatestTrees.push(t.left);
         }
