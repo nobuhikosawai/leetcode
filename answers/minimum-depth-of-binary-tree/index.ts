@@ -1,29 +1,30 @@
 import { TreeNode } from '../../data-structures/tree-node';
 
+type TreeNodeWithDepth = [TreeNode, number];
+
 export function minDepth(root: TreeNode | null): number {
   if (!root) {
     return 0;
   }
 
-  let depth = 1;
-  if (!root.left && !root.right) {
-    return depth;
-  }
+  const queue: TreeNodeWithDepth[] = [[root, 1]];
 
-  let searchQueues: TreeNode[] = [root.left, root.right].filter((n) => n);
-
-  while (searchQueues.length > 0) {
-    const newSearchQueues: TreeNode[] = [];
-    depth++;
-    for (const node of searchQueues) {
-      if (!node.left && !node.right) {
-        return depth;
-      } else {
-        newSearchQueues.push(...[node.left, node.right].filter((n) => n));
-      }
+  let currentDepth = 1;
+  while (queue.length > 0) {
+    const [node, depth] = queue.shift();
+    if (!node.left && !node.right) {
+      currentDepth = depth;
+      break;
     }
-    searchQueues = newSearchQueues;
+
+    if (node.left) {
+      queue.push([node.left, depth + 1]);
+    }
+
+    if (node.right) {
+      queue.push([node.right, depth + 1]);
+    }
   }
 
-  return depth;
+  return currentDepth;
 }
