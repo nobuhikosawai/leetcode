@@ -1,50 +1,50 @@
 // 322. Coin Change
 // https://leetcode.com/problems/coin-change/
+
+const SOLUTION: 'topdown' | 'bottomup' = 'bottomup';
+
 export function coinChange(coins: number[], amount: number): number {
-  if (amount === 0) {
-    return 0;
-  }
+  if (SOLUTION === 'topdown') {
+    return helper(coins, amount, {});
 
-  const sortedCoins = coins.sort((a, b) => {
-    return b - a; // descending order
-  });
-
-  const helper = (amount: number, currentIdx: number): number => {
-    const coin = sortedCoins[currentIdx];
-
-    if (coin === amount) {
-      return 1;
-    } else if (coin > amount) {
-      if (currentIdx + 1 >= sortedCoins.length) {
+    function helper(
+      coins: number[],
+      amount: number,
+      cache: { [key: number]: number }
+    ) {
+      if (amount === 0) {
+        return 0;
+      }
+      if (amount < 0) {
         return -1;
       }
+      if (cache[amount] !== undefined) {
+        return cache[amount];
+      }
 
-      return helper(amount, currentIdx + 1);
-    } else {
-      const nextTarget = amount - coin;
-
-      let res: number;
-      let nextIndex = currentIdx;
-
-      while (nextIndex < sortedCoins.length) {
-        const _res = helper(nextTarget, nextIndex);
-
-        if (_res > -1) {
-          res = _res;
-          break;
+      let min = +Infinity;
+      coins.forEach((coin) => {
+        const res = helper(coins, amount - coin, cache);
+        if (res >= 0 && res < min) {
+          min = res + 1;
         }
+      });
+      cache[amount] = min === +Infinity ? -1 : min;
 
-        nextIndex++;
-      }
-
-      if (!res) {
-        return -1;
-      } else {
-        return res + 1;
-      }
+      return cache[amount];
     }
-  };
+  } else {
+    const res = Array(amount + 1).fill(+Infinity);
+    res[0] = 0;
 
-  const currentIdx = 0;
-  return helper(amount, currentIdx);
+    for (let i = 1; i <= amount; i++) {
+      coins.forEach((coin) => {
+        if (i - coin >= 0) {
+          res[i] = Math.min(res[i], res[i - coin] + 1);
+        }
+      });
+    }
+
+    return res[amount] === Infinity ? -1 : res[amount];
+  }
 }

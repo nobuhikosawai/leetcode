@@ -28,4 +28,11 @@ describe('coin-change', () => {
     const res = 4;
     expect(coinChange(coins, amount)).toEqual(res);
   });
+
+  it('test5', () => {
+    const coins = [186, 419, 83, 408],
+      amount = 6249;
+    const res = 20;
+    expect(coinChange(coins, amount)).toEqual(res);
+  });
 });
