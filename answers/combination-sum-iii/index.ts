@@ -1,32 +1,32 @@
 // 216. Combination Sum III
 // https://leetcode.com/problems/combination-sum-iii
 export function combinationSum3(k: number, n: number): number[][] {
-  function helper(
+  const MAX = 9;
+
+  function backtrack(
     target: number,
-    candidates: number[],
-    count: number
-  ): number[][] {
-    if (count > k || target < 1) {
-      return [];
+    results: number[][],
+    combination: number[],
+    nextStart: number
+  ) {
+    if (target === 0 && combination.length === k) {
+      results.push([...combination]);
+      return;
     }
 
-    return candidates.flatMap((c, i) => {
-      const newTarget = target - c;
+    if (target < 0 || combination.length === k) {
+      return;
+    }
 
-      if (newTarget === 0 && count === k) {
-        return [[c]];
-      }
-
-      const newCandidates = [...candidates.slice(i + 1)];
-
-      const res = helper(newTarget, newCandidates, count + 1);
-
-      return res.map((r) => {
-        return [c, ...r];
-      });
-    });
+    for (let i = nextStart; i <= MAX; i++) {
+      combination.push(i);
+      backtrack(target - i, results, combination, i + 1);
+      combination.pop();
+    }
   }
 
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  return helper(n, numbers, 1);
+  let res: number[][] = [];
+  backtrack(n, res, [], 1);
+
+  return res;
 }
