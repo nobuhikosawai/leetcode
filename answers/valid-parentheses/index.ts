@@ -5,34 +5,21 @@ export function isValid(s: string): boolean {
 
   const parentheses: string[] = s.split('');
 
+  const mapping = new Map([
+    [')', '('],
+    ['}', '{'],
+    [']', '['],
+  ]);
+
   for (const p of parentheses) {
-    switch (p) {
-      case '(':
-      case '{':
-      case '[':
-        stack.push(p);
-        break;
-      case ')':
-        if (stack[stack.length - 1] === '(') {
-          stack.pop();
-          break;
-        } else {
-          return false;
-        }
-      case '}':
-        if (stack[stack.length - 1] === '{') {
-          stack.pop();
-          break;
-        } else {
-          return false;
-        }
-      case ']':
-        if (stack[stack.length - 1] === '[') {
-          stack.pop();
-          break;
-        } else {
-          return false;
-        }
+    if (mapping.has(p)) {
+      if (stack[stack.length - 1] === mapping.get(p)) {
+        stack.pop();
+      } else {
+        return false;
+      }
+    } else {
+      stack.push(p);
     }
   }
 
