@@ -36,6 +36,7 @@ describe('linked-list-cycle', () => {
     connect(listNode, pos);
     expect(hasCycle(listNode)).toEqual(output);
   });
+
   it('test2', () => {
     const head = [1, 2],
       pos = 0;
@@ -44,8 +45,18 @@ describe('linked-list-cycle', () => {
     connect(listNode, pos);
     expect(hasCycle(listNode)).toEqual(output);
   });
+
   it('test3', () => {
     const head = [1],
+      pos = -1;
+    const output = false;
+    const listNode = createListNode(head);
+    connect(listNode, pos);
+    expect(hasCycle(listNode)).toEqual(output);
+  });
+
+  it('test4', () => {
+    const head = [1, 2],
       pos = -1;
     const output = false;
     const listNode = createListNode(head);
