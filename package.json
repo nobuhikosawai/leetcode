@@ -4,6 +4,7 @@
   "main": "index.ts",
   "author": "Nobuhiko Sawai <nobuhiko.sawai@gmail.com>",
   "license": "MIT",
+  "packageManager": "yarn@3.3.0",
   "scripts": {
     "test": "jest"
   },
