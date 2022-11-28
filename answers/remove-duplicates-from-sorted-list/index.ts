@@ -7,21 +7,12 @@ export function deleteDuplicates(head: ListNode | null): ListNode | null {
     return null;
   }
 
-  let noDup: ListNode | null = new ListNode(head.val);
-  let node: ListNode | null = noDup;
-
-  while (true) {
-    head = head.next;
-
-    if (!head) {
-      break;
-    }
-
-    if (node.val !== head.val) {
-      node.next = new ListNode(head.val);
-      node = node.next;
-    }
+  if (head.next && head.val === head.next.val) {
+    head.next = head.next.next;
+    deleteDuplicates(head);
+  } else {
+    deleteDuplicates(head.next);
   }
 
-  return noDup;
+  return head;
 }

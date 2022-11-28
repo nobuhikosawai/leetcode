@@ -17,4 +17,20 @@ describe('remove-duplicates-from-sorted-list', () => {
       createListNode(output)
     );
   });
+
+  it('test3', () => {
+    const head = [1];
+    const output = [1];
+    expect(deleteDuplicates(createListNode(head))).toEqual(
+      createListNode(output)
+    );
+  });
+
+  it('test4', () => {
+    const head = [1, 1, 1];
+    const output = [1];
+    expect(deleteDuplicates(createListNode(head))).toEqual(
+      createListNode(output)
+    );
+  });
 });
