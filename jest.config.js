@@ -1,6 +1,6 @@
 module.exports = {
   roots: ['<rootDir>/answers'],
   transform: {
-    '^.+\\.ts?$': 'ts-jest',
+    '^.+\\.ts?$': '@swc/jest',
   },
 };
